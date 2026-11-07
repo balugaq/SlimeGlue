@@ -101,3 +101,8 @@ build/
 
 # Common working directory
 run/
+
+# Added by mc-plugin-github-automation
+.workbuddy/
+!lib/*.jar
+server/

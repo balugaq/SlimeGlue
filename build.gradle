@@ -11,7 +11,8 @@ def gitCommit = providers.environmentVariable('GITHUB_SHA')
     }.standardOutput.asText.map { it.trim() })
     .getOrElse('unknown')
 
-version = "1.0.3-${gitCommit}"
+// gradle.properties 里的 version 优先（release CI 按它打 tag），本地开发回落到 commit 后缀
+version = findProperty('version') ?: "1.0.3-${gitCommit}"
 description = 'A Slimefun addon, target to improve the compatibility with other plugins'
 
 java {
